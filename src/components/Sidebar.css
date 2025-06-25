@@ -87,6 +87,18 @@
     box-shadow: none;
   }
 }
+.sidebar-header {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 700;
+  padding: 20px 24px 12px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  margin-bottom: 20px;
+  user-select: none;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
 
 /* Hover effect for desktop sidebar */
 @media (min-width: 769px) {

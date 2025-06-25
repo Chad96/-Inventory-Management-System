@@ -3,11 +3,11 @@
     {
       "name": "Sample Product",
       "description": "Sample description",
-      "price": 32.99,
+      "price": 501.99,
       "category": "General",
       "stock": 15,
       "lowStockThreshold": 10,
-      "supplierId": null,
+      "supplierId": 1,
       "id": "1"
     },
     {

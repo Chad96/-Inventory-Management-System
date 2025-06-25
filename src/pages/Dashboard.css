@@ -1,28 +1,69 @@
 /* Dashboard-specific styles */
 .dashboard-container {
-  padding: 20px;
+  padding: 40px 20px;
+  background: linear-gradient(to right, #f8f9fa, #e9ecef);
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .card {
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: none;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background-color: #ffffff;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
+}
+
+.card-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #343a40;
+}
+
+.card-text {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #0d6efd;
 }
 
 .alert {
   border-left: 4px solid #dc3545;
+  background-color: #fff0f0;
+  padding: 12px;
+  border-radius: 4px;
+  color: #721c24;
+}
+
+/* Chart container */
+.chart-container {
+  width: 100%;
+  max-width: 300px;
+  height: 300px;
+  margin: 0 auto;
+  position: relative;
 }
 
 /* Responsive adjustments */
 @media (max-width: 576px) {
   .dashboard-container {
-    padding: 10px;
+    padding: 20px 10px;
   }
 
   .card-title {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
   }
 
   .card-text {
-    font-size: 1rem;
+    font-size: 1.5rem;
+  }
+
+  .chart-container {
+    max-width: 250px;
+    height: 250px;
   }
 }

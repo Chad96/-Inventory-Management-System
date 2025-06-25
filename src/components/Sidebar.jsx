@@ -9,6 +9,10 @@ function Sidebar({ isSidebarActive, toggleSidebar, hideSidebar }) {
       className={`sidebar ${isSidebarActive ? 'active' : 'collapsed'}`}
       onMouseLeave={hideSidebar}
     >
+      <div className="sidebar-header">
+        Inventory Management
+      </div>
+
       <Nav className="flex-column">
         <Nav.Item>
           <Nav.Link as={Link} to="/" onClick={toggleSidebar} className="nav-link">
