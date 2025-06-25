@@ -1,0 +1,19 @@
+/* Alert-specific styles */
+.alert-custom {
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .alert-custom {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+
+  .alert-custom .alert-heading {
+    font-size: 1rem;
+  }
+}

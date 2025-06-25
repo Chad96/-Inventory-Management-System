@@ -3,11 +3,11 @@
     {
       "name": "Sample Product",
       "description": "Sample description",
-      "price": 30.99,
+      "price": 32.99,
       "category": "General",
       "stock": 15,
       "lowStockThreshold": 10,
-      "supplierId": 1,
+      "supplierId": null,
       "id": "1"
     },
     {
@@ -18,6 +18,26 @@
       "category": "Stationery",
       "stock": 35,
       "lowStockThreshold": 17,
+      "supplierId": null
+    },
+    {
+      "id": "6f4b",
+      "name": "Books",
+      "description": "React and Python text books",
+      "price": 106,
+      "category": "Stationery",
+      "stock": 2,
+      "lowStockThreshold": 1,
+      "supplierId": 3151
+    },
+    {
+      "id": "aa5a",
+      "name": "Monitor",
+      "description": "An ultrawide LG monitor",
+      "price": 17,
+      "category": "Tech Gear",
+      "stock": 2,
+      "lowStockThreshold": 10,
       "supplierId": null
     }
   ],
@@ -33,6 +53,12 @@
       "name": "Chadrack Ndalamba",
       "contact": "0846945647",
       "email": "chadrackndalamba@gmail.com"
+    },
+    {
+      "id": "3151",
+      "name": "Big Tree Estate",
+      "contact": "01236587",
+      "email": "jcgcjgcj@gmail.com"
     }
   ],
   "sales": [

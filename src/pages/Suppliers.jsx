@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Navbar, Nav, Container, Table, Button, Modal, Form, Alert } from 'react-bootstrap';
+import { Navbar, Nav, Container, Table, Button, Modal, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './Suppliers.css';
 
-function Suppliers() {
+function Suppliers({ addAlert }) {
   const [suppliers, setSuppliers] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [editSupplier, setEditSupplier] = useState(null);
@@ -13,7 +13,6 @@ function Suppliers() {
     contact: '',
     email: ''
   });
-  const [error, setError] = useState('');
 
   useEffect(() => {
     fetchData();
@@ -24,7 +23,7 @@ function Suppliers() {
       const response = await axios.get('http://localhost:3001/suppliers');
       setSuppliers(response.data);
     } catch (err) {
-      setError('Failed to load suppliers.');
+      addAlert('Failed to load suppliers.', 'danger');
     }
   };
 
@@ -37,15 +36,17 @@ function Suppliers() {
     try {
       if (editSupplier) {
         await axios.put(`http://localhost:3001/suppliers/${editSupplier.id}`, formData);
+        addAlert('Supplier updated successfully.', 'success');
       } else {
         await axios.post('http://localhost:3001/suppliers', formData);
+        addAlert('Supplier added successfully.', 'success');
       }
       fetchData();
       setShowModal(false);
       setFormData({ name: '', contact: '', email: '' });
       setEditSupplier(null);
     } catch (err) {
-      setError('Failed to save supplier.');
+      addAlert('Failed to save supplier.', 'danger');
     }
   };
 
@@ -58,9 +59,10 @@ function Suppliers() {
   const handleDelete = async (id) => {
     try {
       await axios.delete(`http://localhost:3001/suppliers/${id}`);
+      addAlert('Supplier deleted successfully.', 'success');
       fetchData();
     } catch (err) {
-      setError('Failed to delete supplier.');
+      addAlert('Failed to delete supplier.', 'danger');
     }
   };
 
@@ -81,7 +83,6 @@ function Suppliers() {
         </Container>
       </Navbar> */}
       <h1>Suppliers</h1>
-      {error && <Alert variant="danger">{error}</Alert>}
       <Button onClick={() => setShowModal(true)} className="mb-3">
         Add Supplier
       </Button>

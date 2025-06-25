@@ -5,14 +5,14 @@ body {
 
 /* Main Content */
 .main-content {
-  margin-left: 250px; /* Offset for sidebar */
+  margin-left: 0; /* No offset by default */
   padding: 20px;
   padding-top: 70px; /* Space for navbar */
   transition: margin-left 0.3s ease;
 }
 
 .main-content.collapsed {
-  margin-left: 0; /* No offset when sidebar is collapsed */
+  margin-left: 0; /* No offset when sidebar is hidden */
 }
 
 /* Toggle Button */
@@ -22,6 +22,28 @@ body {
   top: 10px;
   left: 10px;
   z-index: 1100;
+}
+
+/* Hover Trigger */
+.hover-trigger {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 20px; /* Narrow strip for hover */
+  background: transparent;
+  z-index: 1001;
+}
+
+/* Alert Container */
+.alert-container {
+  position: fixed;
+  top: 70px; /* Below navbar */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 600px;
+  z-index: 1200; /* Above all else */
 }
 
 /* Navbar Styles */
@@ -35,11 +57,20 @@ body {
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
   .main-content {
-    margin-left: 0; /* No offset on mobile */
+    margin-left: 0;
   }
 
   .toggle-btn {
-    display: block; /* Show toggle button on mobile */
+    display: block;
+  }
+
+  .hover-trigger {
+    display: none;
+  }
+
+  .alert-container {
+    width: 95%;
+    top: 60px;
   }
 
   .table-responsive {

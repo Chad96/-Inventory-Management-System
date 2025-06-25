@@ -1,15 +1,14 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Navbar, Nav, Container, Table, Button, Modal, Form, Alert } from 'react-bootstrap';
+import { Navbar, Nav, Container, Table, Button, Modal, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './SalesReport.css';
 
-function SalesReport() {
+function SalesReport({ addAlert }) {
   const [sales, setSales] = useState([]);
   const [products, setProducts] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [formData, setFormData] = useState({ productId: '', quantity: '' });
-  const [error, setError] = useState('');
 
   useEffect(() => {
     fetchData();
@@ -25,7 +24,7 @@ function SalesReport() {
       const productsRes = await axios.get('http://localhost:3001/products');
       setProducts(productsRes.data);
     } catch (err) {
-      setError('Failed to load data.');
+      addAlert('Failed to load data.', 'danger');
     }
   };
 
@@ -48,11 +47,12 @@ function SalesReport() {
       await axios.patch(`http://localhost:3001/products/${formData.productId}`, {
         stock: product.stock - parseInt(formData.quantity)
       });
+      addAlert('Sale recorded successfully.', 'success');
       fetchData();
       setShowModal(false);
       setFormData({ productId: '', quantity: '' });
     } catch (err) {
-      setError(err.message);
+      addAlert(err.message, 'danger');
     }
   };
 
@@ -73,7 +73,6 @@ function SalesReport() {
         </Container>
       </Navbar> */}
       <h1>Sales Report (Last 30 Days)</h1>
-      {error && <Alert variant="danger">{error}</Alert>}
       <Button onClick={() => setShowModal(true)} className="mb-3">
         Record Sale
       </Button>

@@ -1,14 +1,13 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Navbar, Nav, Container, Card, Alert, Row, Col } from 'react-bootstrap';
+import { Navbar, Nav, Container, Card, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './Dashboard.css';
 
-function Dashboard() {
+function Dashboard({ addAlert }) {
   const [lowStock, setLowStock] = useState([]);
   const [productsCount, setProductsCount] = useState(0);
   const [salesCount, setSalesCount] = useState(0);
-  const [error, setError] = useState('');
 
   useEffect(() => {
     fetchData();
@@ -20,11 +19,15 @@ function Dashboard() {
       setProductsCount(productsRes.data.length);
       const lowStockItems = productsRes.data.filter(p => p.stock <= p.lowStockThreshold);
       setLowStock(lowStockItems);
+      if (lowStockItems.length > 0) {
+        lowStockItems.forEach(item => {
+          addAlert(`${item.name}: ${item.stock} units remaining`, 'warning');
+        });
+      }
       const salesRes = await axios.get('http://localhost:3001/sales');
       setSalesCount(salesRes.data.length);
     } catch (err) {
-      setError('Failed to load data. Please check the server.');
-      console.error(err);
+      addAlert('Failed to load data. Please check the server.', 'danger');
     }
   };
 
@@ -45,15 +48,6 @@ function Dashboard() {
         </Container>
       </Navbar> */}
       <h1>Dashboard</h1>
-      {error && <Alert variant="danger">{error}</Alert>}
-      {lowStock.length > 0 && (
-        <Alert variant="danger">
-          <h4>Low Stock Alert!</h4>
-          {lowStock.map(product => (
-            <p key={product.id}>{product.name}: {product.stock} units remaining</p>
-          ))}
-        </Alert>
-      )}
       <Row>
         <Col md={6}>
           <Card className="mb-4">

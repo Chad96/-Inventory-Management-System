@@ -3,9 +3,12 @@ import { Link } from 'react-router-dom';
 import { FaTachometerAlt, FaBox, FaChartLine, FaUsers } from 'react-icons/fa';
 import './Sidebar.css';
 
-function Sidebar({ isSidebarActive, toggleSidebar }) {
+function Sidebar({ isSidebarActive, toggleSidebar, hideSidebar }) {
   return (
-    <div className={`sidebar ${isSidebarActive ? 'active' : 'collapsed'}`}>
+    <div
+      className={`sidebar ${isSidebarActive ? 'active' : 'collapsed'}`}
+      onMouseLeave={hideSidebar}
+    >
       <Nav className="flex-column">
         <Nav.Item>
           <Nav.Link as={Link} to="/" onClick={toggleSidebar} className="nav-link">
