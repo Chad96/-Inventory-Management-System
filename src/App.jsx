@@ -10,7 +10,7 @@ import Suppliers from './pages/Suppliers';
 import './index.css';
 
 function App() {
-  const [isSidebarActive, setSidebarActive] = useState(false);
+  const [isSidebarActive, setSidebarActive] = useState(true); // Default to true for visibility on all screens
 
   const toggleSidebar = () => {
     setSidebarActive(!isSidebarActive);

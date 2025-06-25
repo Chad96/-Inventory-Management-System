@@ -30,7 +30,7 @@ function Dashboard() {
 
   return (
     <div>
-      <Navbar bg="light" expand="lg" className="mb-4">
+      {/* <Navbar bg="light" expand="lg" className="mb-4">
         <Container>
           <Navbar.Brand as={Link} to="/">Inventory Management</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -43,7 +43,7 @@ function Dashboard() {
             </Nav>
           </Navbar.Collapse>
         </Container>
-      </Navbar>
+      </Navbar> */}
       <h1>Dashboard</h1>
       {error && <Alert variant="danger">{error}</Alert>}
       {lowStock.length > 0 && (

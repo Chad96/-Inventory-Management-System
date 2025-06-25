@@ -96,7 +96,7 @@ function Products() {
 
   return (
     <div>
-      <Navbar bg="light" expand="lg" className="mb-4">
+      {/* <Navbar bg="light" expand="lg" className="mb-4">
         <Container>
           <Navbar.Brand as={Link} to="/">Inventory Management</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -109,7 +109,7 @@ function Products() {
             </Nav>
           </Navbar.Collapse>
         </Container>
-      </Navbar>
+      </Navbar> */}
       <h1>Products</h1>
       {error && <Alert variant="danger">{error}</Alert>}
       <Button onClick={() => setShowModal(true)} className="mb-3">

@@ -1,6 +1,7 @@
 import { Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FaTachometerAlt, FaBox, FaChartLine, FaUsers } from 'react-icons/fa';
+import './Sidebar.css';
 
 function Sidebar({ isSidebarActive, toggleSidebar }) {
   return (

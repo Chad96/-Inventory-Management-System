@@ -9,6 +9,16 @@
       "lowStockThreshold": 10,
       "supplierId": 1,
       "id": "1"
+    },
+    {
+      "id": "3bd7",
+      "name": "Pens",
+      "description": "Blue and Black Pens fr",
+      "price": 1000,
+      "category": "Stationery",
+      "stock": 35,
+      "lowStockThreshold": 17,
+      "supplierId": null
     }
   ],
   "suppliers": [
