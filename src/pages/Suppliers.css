@@ -1,0 +1,30 @@
+/* Suppliers-specific styles */
+.suppliers-container {
+  padding: 20px;
+}
+
+.table {
+  background-color: #fff;
+}
+
+.btn-add {
+  background-color: #17a2b8;
+  border-color: #17a2b8;
+}
+
+.btn-add:hover {
+  background-color: #138496;
+  border-color: #117a8b;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .suppliers-container {
+    padding: 10px;
+  }
+
+  .table th,
+  .table td {
+    padding: 0.5rem;
+  }
+}

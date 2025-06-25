@@ -1,0 +1,30 @@
+/* Sales Report-specific styles */
+.sales-report-container {
+  padding: 20px;
+}
+
+.table {
+  background-color: #fff;
+}
+
+.btn-record {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-record:hover {
+  background-color: #0056b3;
+  border-color: #004085;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .sales-report-container {
+    padding: 10px;
+  }
+
+  .table th,
+  .table td {
+    padding: 0.5rem;
+  }
+}

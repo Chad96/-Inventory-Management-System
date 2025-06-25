@@ -1,0 +1,30 @@
+/* Products-specific styles */
+.products-container {
+  padding: 20px;
+}
+
+.table {
+  background-color: #fff;
+}
+
+.btn-add {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.btn-add:hover {
+  background-color: #218838;
+  border-color: #1e7e34;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .products-container {
+    padding: 10px;
+  }
+
+  .table th,
+  .table td {
+    padding: 0.5rem;
+  }
+}
