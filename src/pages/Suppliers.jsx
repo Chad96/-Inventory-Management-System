@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Navbar, Nav, Container, Table, Button, Modal, Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Table, Button, Form, Container } from 'react-bootstrap';
 import './Suppliers.css';
 
 function Suppliers({ addAlert }) {
   const [suppliers, setSuppliers] = useState([]);
-  const [showModal, setShowModal] = useState(false);
+  const [showPanel, setShowPanel] = useState(false);
   const [editSupplier, setEditSupplier] = useState(null);
   const [formData, setFormData] = useState({
     name: '',
@@ -42,7 +41,7 @@ function Suppliers({ addAlert }) {
         addAlert('Supplier added successfully.', 'success');
       }
       fetchData();
-      setShowModal(false);
+      setShowPanel(false);
       setFormData({ name: '', contact: '', email: '' });
       setEditSupplier(null);
     } catch (err) {
@@ -53,7 +52,7 @@ function Suppliers({ addAlert }) {
   const handleEdit = (supplier) => {
     setEditSupplier(supplier);
     setFormData(supplier);
-    setShowModal(true);
+    setShowPanel(true);
   };
 
   const handleDelete = async (id) => {
@@ -67,96 +66,99 @@ function Suppliers({ addAlert }) {
   };
 
   return (
-    <div>
-      {/* <Navbar bg="light" expand="lg" className="mb-4">
-        <Container>
-          <Navbar.Brand as={Link} to="/">Inventory Management</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link as={Link} to="/">Dashboard</Nav.Link>
-              <Nav.Link as={Link} to="/products">Products</Nav.Link>
-              <Nav.Link as={Link} to="/sales-report">Sales Report</Nav.Link>
-              <Nav.Link as={Link} to="/suppliers">Suppliers</Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar> */}
-      <h1>Suppliers</h1>
-      <Button onClick={() => setShowModal(true)} className="mb-3">
-        Add Supplier
-      </Button>
-      <div className="table-responsive">
-        <Table striped bordered hover>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Contact</th>
-              <th>Email</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {suppliers.map(supplier => (
-              <tr key={supplier.id}>
-                <td>{supplier.name}</td>
-                <td>{supplier.contact}</td>
-                <td>{supplier.email}</td>
-                <td>
-                  <Button variant="primary" size="sm" onClick={() => handleEdit(supplier)}>
-                    Edit
-                  </Button>{' '}
-                  <Button variant="danger" size="sm" onClick={() => handleDelete(supplier.id)}>
-                    Delete
-                  </Button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
+    <Container className="suppliers-container">
+      <div className="suppliers-header">
+        <h2>Suppliers</h2>
+        <Button className="btn-modern" onClick={() => {
+          setFormData({ name: '', contact: '', email: '' });
+          setEditSupplier(null);
+          setShowPanel(true);
+        }}>
+          + Add Supplier
+        </Button>
       </div>
 
-      <Modal show={showModal} onHide={() => setShowModal(false)}>
-        <Modal.Header closeButton>
-          <Modal.Title>{editSupplier ? 'Edit Supplier' : 'Add Supplier'}</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form onSubmit={handleSubmit}>
-            <Form.Group className="mb-3">
-              <Form.Label>Name</Form.Label>
-              <Form.Control
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleInputChange}
-                required
-              />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Contact</Form.Label>
-              <Form.Control
-                type="text"
-                name="contact"
-                value={formData.contact}
-                onChange={handleInputChange}
-              />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Email</Form.Label>
-              <Form.Control
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleInputChange}
-              />
-            </Form.Group>
-            <Button variant="primary" type="submit">
-              Save
-            </Button>
-          </Form>
-        </Modal.Body>
-      </Modal>
-    </div>
+      <div className="content-wrapper">
+        <div className="table-container">
+          <Table responsive bordered className="modern-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Contact</th>
+                <th>Email</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {suppliers.map((supplier) => (
+                <tr key={supplier.id}>
+                  <td>{supplier.name}</td>
+                  <td>{supplier.contact}</td>
+                  <td>{supplier.email}</td>
+                  <td>
+                    <div className="d-flex gap-2 flex-wrap">
+                      <Button variant="outline-primary" size="sm" onClick={() => handleEdit(supplier)}>
+                        Edit
+                      </Button>
+                      <Button variant="outline-danger" size="sm" onClick={() => handleDelete(supplier.id)}>
+                        Delete
+                      </Button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        </div>
+
+        {showPanel && (
+          <div className="side-panel">
+            <div className="panel-header">
+              <h5>{editSupplier ? 'Edit Supplier' : 'Add Supplier'}</h5>
+              <Button variant="light" size="sm" onClick={() => setShowPanel(false)}>✕</Button>
+            </div>
+            <Form onSubmit={handleSubmit} className="modern-form">
+              <Form.Group className="mb-3">
+                <Form.Label>Name</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  required
+                  placeholder="Enter full name"
+                />
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label>Contact</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="contact"
+                  value={formData.contact}
+                  onChange={handleInputChange}
+                  placeholder="Enter contact number"
+                />
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label>Email</Form.Label>
+                <Form.Control
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  placeholder="Enter email address"
+                />
+              </Form.Group>
+              <div className="d-grid">
+                <Button type="submit" className="btn-modern-save">
+                  Save Supplier
+                </Button>
+              </div>
+            </Form>
+          </div>
+        )}
+      </div>
+    </Container>
   );
 }
 

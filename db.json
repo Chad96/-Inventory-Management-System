@@ -44,7 +44,7 @@
   "suppliers": [
     {
       "id": "1",
-      "name": "Sample Supplier",
+      "name": "Sample Suppliers",
       "contact": "123-456-7890",
       "email": "supplier@example.com"
     },
