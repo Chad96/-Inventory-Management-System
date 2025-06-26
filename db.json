@@ -39,6 +39,16 @@
       "stock": 2,
       "lowStockThreshold": 10,
       "supplierId": null
+    },
+    {
+      "id": "3990",
+      "name": "Books",
+      "description": "React and Python text books",
+      "price": 150,
+      "category": "Books",
+      "stock": 10,
+      "lowStockThreshold": 3,
+      "supplierId": 1
     }
   ],
   "suppliers": [

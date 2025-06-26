@@ -31,11 +31,18 @@ h1 {
   color: white;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
 }
 
 .summary-cards .card:hover {
   transform: translateY(-6px);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.icon-box {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: white;
 }
 
 .alert-list {
@@ -65,7 +72,6 @@ h1 {
   text-align: center;
 }
 
-/* Updated chart section styles */
 .chart-section {
   margin-top: 2.5rem;
   display: flex;

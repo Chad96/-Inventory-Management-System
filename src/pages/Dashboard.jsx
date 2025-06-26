@@ -18,6 +18,13 @@ import {
 } from 'chart.js';
 import { Doughnut, Bar, Line } from 'react-chartjs-2';
 
+import {
+  FaBoxOpen,
+  FaChartLine,
+  FaExclamationTriangle,
+  FaBell,
+} from 'react-icons/fa';
+
 ChartJS.register(
   ArcElement,
   Tooltip,
@@ -141,6 +148,7 @@ function Dashboard() {
       <div className="summary-cards">
         <Card>
           <Card.Body>
+            <div className="icon-box"><FaBoxOpen size={32} /></div>
             <Card.Title>Total Products</Card.Title>
             <Card.Text>{productsCount}</Card.Text>
           </Card.Body>
@@ -148,6 +156,7 @@ function Dashboard() {
 
         <Card>
           <Card.Body>
+            <div className="icon-box"><FaChartLine size={32} /></div>
             <Card.Title>Total Sales</Card.Title>
             <Card.Text>{salesCount}</Card.Text>
           </Card.Body>
@@ -155,6 +164,7 @@ function Dashboard() {
 
         <Card>
           <Card.Body>
+            <div className="icon-box"><FaExclamationTriangle size={32} /></div>
             <Card.Title>Low Stock Items</Card.Title>
             <Card.Text>{lowStock.length}</Card.Text>
           </Card.Body>
@@ -162,7 +172,8 @@ function Dashboard() {
 
         <Card>
           <Card.Body>
-            <Card.Title>⚠️ Alerts</Card.Title>
+            <div className="icon-box"><FaBell size={32} /></div>
+            <Card.Title>Alerts</Card.Title>
             <div className="alert-list">
               {alerts.length === 0 ? (
                 <p className="text-white">No current alerts</p>
