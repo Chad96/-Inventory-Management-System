@@ -172,7 +172,7 @@ function Dashboard() {
 
         <Card>
           <Card.Body>
-            <div className="icon-box"><FaBell size={32} /></div>
+            <div className="icon-box alert-icon"><FaBell size={32} /></div>
             <Card.Title>Alerts</Card.Title>
             <div className="alert-list">
               {alerts.length === 0 ? (

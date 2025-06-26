@@ -45,6 +45,12 @@ h1 {
   color: white;
 }
 
+/* Adjust bell icon on alert card */
+.alert-icon {
+  position: relative;
+  top: 16px; /* tweak this as needed */
+}
+
 .alert-list {
   max-height: 130px;
   overflow-y: auto;
