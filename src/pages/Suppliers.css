@@ -131,3 +131,25 @@
 .btn-modern-save:hover {
   background-color: #629ffa;
 }
+/* --- FORM GROUP SPACING --- */
+.modern-form .form-group {
+  margin-bottom: 1.25rem;
+}
+
+/* --- Save Button Styling --- */
+.btn-modern-save {
+  background-color: #0d6efd;
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 6px;
+  padding: 8px 14px;
+  border: none;
+  width: fit-content;
+  font-size: 0.9rem;
+  margin-top: 10px; /* ✅ Adds space between email and button */
+  align-self: flex-start;
+}
+
+.btn-modern-save:hover {
+  background-color: #157347;
+}
