@@ -103,6 +103,7 @@ function Products({ addAlert }) {
         <h2 className="fw-bold">📦 Products</h2>
         <Button
           variant="success"
+          className="add-product-btn"
           onClick={() => {
             setShowForm(true);
             setEditProduct(null);

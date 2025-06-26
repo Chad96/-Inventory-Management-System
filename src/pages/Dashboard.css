@@ -1,5 +1,13 @@
+/* Reset default body margin/padding */
+body, html {
+  margin: 0;
+  padding: 0;
+  margin-top: -2.6%;
+  
+}
+
 .dashboard-container {
-  padding: 40px 25px;
+  padding: 10px 25px 40px; /* Top padding reduced to move up */
   background: #f1f3f5;
   min-height: 100vh;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -8,6 +16,7 @@
 h1 {
   font-weight: 700;
   color: #343a40;
+  text-align: center;
 }
 
 .summary-cards {
@@ -45,10 +54,9 @@ h1 {
   color: white;
 }
 
-/* Adjust bell icon on alert card */
 .alert-icon {
   position: relative;
-  top: 16px; /* tweak this as needed */
+  top: 18px;
 }
 
 .alert-list {
@@ -131,7 +139,7 @@ h1 {
 
 @media (max-width: 768px) {
   .dashboard-container {
-    padding: 20px 10px;
+    padding: 10px;
   }
 
   .summary-cards {
