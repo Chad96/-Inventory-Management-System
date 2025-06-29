@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Navbar, Nav, Container, Table, Button, Modal, Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Table, Button, Modal, Form } from 'react-bootstrap';
 import './SalesReport.css';
 
 function SalesReport({ addAlert }) {
@@ -57,23 +56,9 @@ function SalesReport({ addAlert }) {
   };
 
   return (
-    <div>
-      {/* <Navbar bg="light" expand="lg" className="mb-4">
-        <Container>
-          <Navbar.Brand as={Link} to="/">Inventory Management</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link as={Link} to="/">Dashboard</Nav.Link>
-              <Nav.Link as={Link} to="/products">Products</Nav.Link>
-              <Nav.Link as={Link} to="/sales-report">Sales Report</Nav.Link>
-              <Nav.Link as={Link} to="/suppliers">Suppliers</Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar> */}
+    <div className="sales-report-container">
       <h1>Sales Report (Last 30 Days)</h1>
-      <Button onClick={() => setShowModal(true)} className="mb-3">
+      <Button onClick={() => setShowModal(true)} className="mb-3 btn-record">
         Record Sale
       </Button>
       <div className="table-responsive">
@@ -105,7 +90,7 @@ function SalesReport({ addAlert }) {
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={handleRecordSale}>
-            <Form.Group className="mb-3">
+            <Form.Group className="mb-3" controlId="formProduct">
               <Form.Label>Product</Form.Label>
               <Form.Select
                 name="productId"
@@ -121,7 +106,8 @@ function SalesReport({ addAlert }) {
                 ))}
               </Form.Select>
             </Form.Group>
-            <Form.Group className="mb-3">
+
+            <Form.Group className="mb-3" controlId="formQuantity">
               <Form.Label>Quantity</Form.Label>
               <Form.Control
                 type="number"
@@ -131,7 +117,8 @@ function SalesReport({ addAlert }) {
                 required
               />
             </Form.Group>
-            <Button variant="primary" type="submit">
+
+            <Button variant="primary" type="submit" className="w-100">
               Save
             </Button>
           </Form>

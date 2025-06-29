@@ -1,6 +1,7 @@
 /* Sales Report-specific styles */
 .sales-report-container {
   padding: 20px;
+  background-color: #f8f9fa;
 }
 
 .table {
@@ -15,6 +16,31 @@
 .btn-record:hover {
   background-color: #0056b3;
   border-color: #004085;
+}
+
+/* Modal Form Styling */
+.modal-body form .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.modal-body label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.modal-body input,
+.modal-body select {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #ced4da;
+  border-radius: 0.375rem;
+  box-shadow: none;
+}
+
+.modal-body button[type="submit"] {
+  font-weight: 600;
+  padding: 0.5rem;
 }
 
 /* Responsive adjustments */

@@ -8,11 +8,15 @@ import Dashboard from './pages/Dashboard';
 import Products from './pages/Products';
 import SalesReport from './pages/SalesReport';
 import Suppliers from './pages/Suppliers';
+import Register from './pages/Register';
+import Login from './pages/Login';
+import Profile from './pages/Profile';
+import PrivateRoute from './components/PrivateRoute';
 import './index.css';
 
 function App() {
   const [isSidebarActive, setSidebarActive] = useState(false);
-  const [alerts, setAlerts] = useState([]); // Array to manage multiple alerts
+  const [alerts, setAlerts] = useState([]);
 
   const toggleSidebar = () => {
     setSidebarActive(!isSidebarActive);
@@ -28,14 +32,14 @@ function App() {
 
   const addAlert = (message, variant = 'success', duration = 5000) => {
     const id = Date.now();
-    setAlerts([...alerts, { id, message, variant }]);
+    setAlerts((prev) => [...prev, { id, message, variant }]);
     if (duration) {
       setTimeout(() => removeAlert(id), duration);
     }
   };
 
   const removeAlert = (id) => {
-    setAlerts(alerts.filter((alert) => alert.id !== id));
+    setAlerts((prev) => prev.filter((alert) => alert.id !== id));
   };
 
   return (
@@ -63,10 +67,48 @@ function App() {
               ))}
             </div>
             <Routes>
-              <Route path="/" element={<Dashboard addAlert={addAlert} />} />
-              <Route path="/products" element={<Products addAlert={addAlert} />} />
-              <Route path="/sales-report" element={<SalesReport addAlert={addAlert} />} />
-              <Route path="/suppliers" element={<Suppliers addAlert={addAlert} />} />
+              <Route path="/register" element={<Register addAlert={addAlert} />} />
+              <Route path="/login" element={<Login addAlert={addAlert} />} />
+              <Route
+                path="/"
+                element={
+                  <PrivateRoute>
+                    <Dashboard addAlert={addAlert} />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/products"
+                element={
+                  <PrivateRoute>
+                    <Products addAlert={addAlert} />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/sales-report"
+                element={
+                  <PrivateRoute>
+                    <SalesReport addAlert={addAlert} />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/suppliers"
+                element={
+                  <PrivateRoute>
+                    <Suppliers addAlert={addAlert} />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/profile"
+                element={
+                  <PrivateRoute>
+                    <Profile />
+                  </PrivateRoute>
+                }
+              />
             </Routes>
           </Container>
         </div>

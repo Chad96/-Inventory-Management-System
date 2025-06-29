@@ -1,17 +1,25 @@
 import { Nav } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import { FaTachometerAlt, FaBox, FaChartLine, FaUsers } from 'react-icons/fa';
+import { Link, useNavigate } from 'react-router-dom';
+import { FaTachometerAlt, FaBox, FaChartLine, FaUsers, FaSignOutAlt, FaUserCircle } from 'react-icons/fa';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '../firebase';
 import './Sidebar.css';
 
 function Sidebar({ isSidebarActive, toggleSidebar, hideSidebar }) {
+  const [user] = useAuthState(auth);
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    await auth.signOut();
+    navigate('/login');
+  };
+
   return (
     <div
       className={`sidebar ${isSidebarActive ? 'active' : 'collapsed'}`}
       onMouseLeave={hideSidebar}
     >
-      <div className="sidebar-header">
-        Inventory Management
-      </div>
+      <div className="sidebar-header">Inventory Management</div>
 
       <Nav className="flex-column">
         <Nav.Item>
@@ -34,6 +42,21 @@ function Sidebar({ isSidebarActive, toggleSidebar, hideSidebar }) {
             <FaUsers className="me-2" /> Suppliers
           </Nav.Link>
         </Nav.Item>
+
+        {user && (
+          <>
+            <Nav.Item>
+              <Nav.Link as={Link} to="/profile" onClick={toggleSidebar} className="nav-link">
+                <FaUserCircle className="me-2" /> Profile
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link onClick={handleLogout} className="nav-link">
+                <FaSignOutAlt className="me-2" /> Logout
+              </Nav.Link>
+            </Nav.Item>
+          </>
+        )}
       </Nav>
     </div>
   );
