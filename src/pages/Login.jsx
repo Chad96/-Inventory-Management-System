@@ -23,35 +23,37 @@ function Login({ addAlert }) {
   };
 
   return (
-    <div className="login-container">
-      <h1>Login</h1>
-      {error && <Alert variant="danger">{error}</Alert>}
-      <form onSubmit={handleSubmit}>
-        <label>Email:</label>
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
+    <div className="login-background">
+      <div className="login-container">
+        <h1>Login</h1>
+        {error && <Alert variant="danger">{error}</Alert>}
+        <form onSubmit={handleSubmit}>
+          <label>Email:</label>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
 
-        <label>Password:</label>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
+          <label>Password:</label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
 
-        <button type="submit">Login</button>
-      </form>
+          <button type="submit">Login</button>
+        </form>
 
-      <p style={{ marginTop: '20px', textAlign: 'center' }}>
-        Don’t have an account?{' '}
-        <Link to="/register" style={{ color: '#007bff', textDecoration: 'none' }}>
-          Register here
-        </Link>
-      </p>
+        <p style={{ marginTop: '20px', textAlign: 'center' }}>
+          Don’t have an account?{' '}
+          <Link to="/register" style={{ color: '#007bff', textDecoration: 'none' }}>
+            Register here
+          </Link>
+        </p>
+      </div>
     </div>
   );
 }

@@ -1,8 +1,48 @@
+/* Prevent scrolling on login page */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden; /*Remove all scrollbars */
+}
+
+/* Full-page background */
+.login-background {
+  background-image: url('/src/assets/img/login.jpg'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  /* overflow: hidden;  */
+  margin-left: -1%;
+}
+
+/* Optional dark overlay */
+.login-background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 0;
+}
+
+/* Login form container */
 .login-container {
+  position: relative;
+  z-index: 1;
   max-width: 400px;
-  margin: 80px auto;
+  width: 90%;
   padding: 40px;
-  background: #f8f9fa;
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 12px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
 }
@@ -10,6 +50,7 @@
 .login-container h1 {
   text-align: center;
   margin-bottom: 24px;
+  color: #333;
 }
 
 .login-container form label {
